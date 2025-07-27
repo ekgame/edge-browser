@@ -8,8 +8,8 @@
  */
 
 import type { TagToken } from 'edge-lexer/types'
-import type { Parser, EdgeBuffer } from 'edge-parser'
-import type { ParserTagDefinitionContract } from 'edge-parser/types'
+import type { Parser, EdgeBuffer } from '#edge-parser'
+import type { ParserTagDefinitionContract } from '#edge-parser/types'
 
 import type { Edge } from './edge/main.js'
 import type { Template } from './template.js'
@@ -160,4 +160,4 @@ export type {
   ParserOptions,
   ParserTagDefinitionContract,
   TagTransformer,
-} from 'edge-parser/types'
+} from '#edge-parser/types'

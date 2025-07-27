@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { expressions } from 'edge-parser'
+import { expressions } from '#edge-parser'
 import { TagContract } from '../types.js'
 import { isNotSubsetOf, unallowedExpression, parseJsArg } from '../utils.js'
 

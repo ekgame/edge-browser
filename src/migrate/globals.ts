@@ -13,7 +13,7 @@ import stringify from 'js-stringify'
 // @ts-ignore untyped module
 import inspect from '@poppinss/inspect'
 const { string: prettyPrintHtml } = inspect
-import string from '@poppinss/utils/string'
+import string from '#string'
 
 import { htmlSafe, escape } from '../template.js'
 

@@ -14,6 +14,11 @@
     "!build/tests",
     "!build/tests_helpers"
   ],
+  "imports": {
+    "#edge-parser": "./libs/edge-parser/index.js",
+    "#edge-parser/types": "./libs/edge-parser/src/types.js",
+    "#string": "./libs/poppinss/string/index.js"
+  },
   "exports": {
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
@@ -31,7 +36,8 @@
     "version": "npm run build",
     "prepublishOnly": "npm run build",
     "release": "release-it",
-    "quick:test": "node --import=ts-node-maintained/register/esm --enable-source-maps bin/test.ts"
+    "quick:test": "node --import=ts-node-maintained/register/esm --enable-source-maps bin/test.ts",
+    "serve": "vite"
   },
   "devDependencies": {
     "@adonisjs/eslint-config": "^2.0.0-beta.7",
@@ -59,15 +65,16 @@
     "@poppinss/inspect": "^1.0.1",
     "@poppinss/macroable": "^1.0.4",
     "@poppinss/utils": "^6.9.2",
+    "astring": "^1.9.0",
     "classnames": "^2.5.1",
     "edge-error": "^4.0.2",
     "edge-lexer": "^6.0.3",
-    "edge-parser": "^9.0.4",
     "fs-readdir-recursive": "^1.1.0",
     "he": "^1.2.0",
     "js-stringify": "^1.0.2",
     "property-information": "^6.5.0",
-    "stringify-attributes": "^4.0.0"
+    "stringify-attributes": "^4.0.0",
+    "vite": "^7.0.6"
   },
   "homepage": "https://github.com/edge-js/edge#readme",
   "repository": {

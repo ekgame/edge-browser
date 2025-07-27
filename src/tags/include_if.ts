@@ -8,7 +8,7 @@
  */
 
 import { EdgeError } from 'edge-error'
-import { expressions } from 'edge-parser'
+import { expressions } from '#edge-parser'
 
 import { TagContract } from '../types.js'
 import { ALLOWED_EXPRESSION, getRenderExpression } from './include.js'

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { expressions } from 'edge-parser'
+import { expressions } from '#edge-parser'
 import lodash from '@poppinss/utils/lodash'
 
 import { TagContract } from '../types.js'
