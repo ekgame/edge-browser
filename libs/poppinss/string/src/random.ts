@@ -7,14 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import { randomBytes } from 'node:crypto'
-
 /**
  * Default implementation
  */
 const defaultGenerator = (size: number): string => {
   const bits = (size + 1) * 6
-  const buffer = randomBytes(Math.ceil(bits / 8))
+  const buffer = crypto.getRandomValues(new Uint8Array(Math.ceil(bits / 8)))
   return Buffer.from(buffer)
     .toString('base64')
     .replace(/\+/g, '-')
