@@ -7,7 +7,8 @@
  * file that was distributed with this source code.
  */
 
-import { Loader } from '../loader.js'
+import type { Loader } from '../loader.js'
+import type { BrowserLoader } from '../browser_loader.js'
 import * as Tags from '../tags/main.js'
 import { Compiler } from '../compiler.js'
 import { Template } from '../template.js'
@@ -23,6 +24,16 @@ import type {
   LoaderContract,
 } from '../types.js'
 import { pluginSuperCharged } from '../plugins/supercharged.js'
+
+let DefaultLoader: typeof BrowserLoader | typeof Loader
+// @ts-ignore
+if (typeof window !== 'undefined') {
+  const { BrowserLoader } = await import('../browser_loader.js')
+  DefaultLoader = BrowserLoader
+} else {
+  const { Loader } = await import('../loader.js')
+  DefaultLoader = Loader
+}
 
 /**
  * Exposes the API to render templates, register custom tags and globals
@@ -120,7 +131,7 @@ export class Edge {
     if (options.loader) {
       this.loader = options.loader
     } else if (!this.loader) {
-      this.loader = new Loader()
+      this.loader = new DefaultLoader()
     }
 
     this.compiler = new Compiler(this.loader, this.tags, this.processor, {
