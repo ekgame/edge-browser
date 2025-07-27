@@ -48,6 +48,7 @@
     "@japa/runner": "^4.1.0",
     "@poppinss/dev-utils": "^2.0.3",
     "@release-it/conventional-changelog": "^10.0.0",
+    "@shikijs/monaco": "^3.8.1",
     "@swc/core": "^1.10.7",
     "@types/fs-readdir-recursive": "^1.1.3",
     "@types/he": "^1.2.3",
@@ -64,8 +65,8 @@
   "dependencies": {
     "@poppinss/inspect": "^1.0.1",
     "@poppinss/macroable": "^1.0.4",
-    "@poppinss/utils": "^6.9.2",
     "@poppinss/string": "file:./libs/poppinss/string",
+    "@poppinss/utils": "^6.9.2",
     "astring": "^1.9.0",
     "classnames": "^2.5.1",
     "edge-error": "^4.0.2",
@@ -73,9 +74,13 @@
     "fs-readdir-recursive": "^1.1.0",
     "he": "^1.2.0",
     "js-stringify": "^1.0.2",
+    "json5": "^2.2.3",
+    "monaco-editor": "^0.52.2",
     "property-information": "^6.5.0",
+    "shiki": "^3.8.1",
     "stringify-attributes": "^4.0.0",
-    "vite": "^7.0.6"
+    "vite": "^7.0.6",
+    "vite-plugin-monaco-editor": "^1.1.0"
   },
   "homepage": "https://github.com/edge-js/edge#readme",
   "repository": {
