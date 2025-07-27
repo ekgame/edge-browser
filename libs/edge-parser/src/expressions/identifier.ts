@@ -15,7 +15,7 @@ export default {
     if (
       (parser.options.localVariables || []).indexOf(statement.name) > -1 ||
       parser.stack.has(statement.name) ||
-      global[statement.name as keyof typeof global] !== undefined
+      (typeof global !== 'undefined' && global[statement.name as keyof typeof global] !== undefined)
     ) {
       return statement
     }
