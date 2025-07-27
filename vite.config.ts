@@ -13,5 +13,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/edge/',
+  base: '/edge-browser/',
 })
