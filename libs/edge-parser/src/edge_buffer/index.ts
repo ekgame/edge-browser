@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { EOL } from 'node:os'
+import { EOL } from '../utils.js'
 // @ts-expect-error "untyped module"
 import stringify from 'js-stringify'
 

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import { EOL } from 'node:os'
+import { EOL } from '../utils.js'
 import { Tokenizer, MustacheTypes, TagTypes } from 'edge-lexer'
 import type { Token, TagToken, MustacheToken } from 'edge-lexer/types'
 
