@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -13,8 +14,8 @@ html, body {
 .layout {
   display: grid;
   grid-template-areas:
-    "data output"
-    "template output";
+    'data output'
+    'template output';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 2fr;
   height: 100%;

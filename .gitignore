@@ -10,6 +10,7 @@ coverage
 yarn.lock
 build
 dist
+dist_web
 docs
 shrinkwrap.yaml
 test/__app

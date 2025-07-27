@@ -1,11 +1,11 @@
-import { Edge } from './index.js';
-import * as monaco from 'monaco-editor';
+import { Edge } from './index.js'
+import * as monaco from 'monaco-editor'
 import { shikiToMonaco } from '@shikijs/monaco'
 import { createHighlighter } from 'shiki/bundle/full'
-import JSON5 from 'json5';
-import prettier from 'prettier';
-import * as parserHtml from 'prettier/parser-html';
-import './browser-test.css';
+import JSON5 from 'json5'
+import prettier from 'prettier'
+import * as parserHtml from 'prettier/parser-html'
+import './browser-test.css'
 
 const initialData = `
 {
@@ -185,7 +185,7 @@ const initialData = `
   totalTasks: 60,
   completionRate: 70
 }
-`;
+`
 
 const initialTemplate = `
 {{-- User Profile Section --}}
@@ -322,7 +322,7 @@ const initialTemplate = `
   <p>Total tasks across all projects: {{ totalTasks }}</p>
   <p>Completion rate: {{ completionRate }}%</p>
 </div>
-`;
+`
 
 // const edge = new Edge();
 // edge.registerTemplate('test', {
@@ -332,14 +332,8 @@ const initialTemplate = `
 
 // Create the highlighter, it can be reused
 const highlighter = await createHighlighter({
-  themes: [
-    'vitesse-dark',
-  ],
-  langs: [
-    'json5',
-    'edge',
-    'html'
-  ],
+  themes: ['vitesse-dark'],
+  langs: ['json5', 'edge', 'html'],
 })
 
 monaco.languages.register({ id: 'json5' })
@@ -348,73 +342,66 @@ monaco.languages.register({ id: 'html' })
 
 shikiToMonaco(highlighter, monaco)
 
-const dataEditor = monaco.editor.create(
-	document.querySelector(".layout-data"),
-	{
-		value: initialData,
-		language: 'json5',
-		automaticLayout: true,
-    theme: 'vitesse-dark',
-	}
-);
+const dataEditor = monaco.editor.create(document.querySelector('.layout-data'), {
+  value: initialData,
+  language: 'json5',
+  automaticLayout: true,
+  theme: 'vitesse-dark',
+})
 
-const templateEditor = monaco.editor.create(
-	document.querySelector(".layout-template"),
-	{
-		value: initialTemplate,
-		language: 'edge',
-		automaticLayout: true,
-    theme: 'vitesse-dark',
-	}
-);
+const templateEditor = monaco.editor.create(document.querySelector('.layout-template'), {
+  value: initialTemplate,
+  language: 'edge',
+  automaticLayout: true,
+  theme: 'vitesse-dark',
+})
 
-const outputEditor = monaco.editor.create(
-	document.querySelector(".layout-output"),
-	{
-		value: '',
-		language: 'html',
-		automaticLayout: true,
-    theme: 'vitesse-dark',
-    readOnly: true,
-    wordWrap: 'on',
-	}
-);
+const outputEditor = monaco.editor.create(document.querySelector('.layout-output'), {
+  value: '',
+  language: 'html',
+  automaticLayout: true,
+  theme: 'vitesse-dark',
+  readOnly: true,
+  wordWrap: 'on',
+})
 
 const render = async () => {
-  const data = dataEditor.getValue();
-  const template = templateEditor.getValue();
+  const data = dataEditor.getValue()
+  const template = templateEditor.getValue()
 
   try {
-    const edge = new Edge();
+    const edge = new Edge()
     edge.registerTemplate('main', {
       template: template,
-    });
+    })
 
-    const parsedData = JSON5.parse(data);
-    const result = await edge.render('main', parsedData);
-    outputEditor.setValue(await prettier.format(result, {
-      parser: 'html',
-      plugins: [parserHtml]
-    }));
-    outputEditor.updateOptions({ language: 'html' });
+    const parsedData = JSON5.parse(data)
+    const result = await edge.render('main', parsedData)
+    outputEditor.setValue(
+      await prettier.format(result, {
+        parser: 'html',
+        plugins: [parserHtml],
+      })
+    )
+    outputEditor.updateOptions({ language: 'html' })
   } catch (error) {
-    const errorMessage = error.message || 'An error occurred during rendering';
-    const errorStack = error.stack || 'No stack trace available';
-    console.error('Rendering error:', errorMessage, errorStack);
-    outputEditor.setValue(`Error: ${errorMessage}\n\nStack Trace:\n${errorStack}`);
-    outputEditor.updateOptions({ language: 'plaintext' });
+    const errorMessage = error.message || 'An error occurred during rendering'
+    const errorStack = error.stack || 'No stack trace available'
+    console.error('Rendering error:', errorMessage, errorStack)
+    outputEditor.setValue(`Error: ${errorMessage}\n\nStack Trace:\n${errorStack}`)
+    outputEditor.updateOptions({ language: 'plaintext' })
   }
-};
+}
 
-render();
+render()
 
 const debouncedRender = (() => {
-  let timeout;
+  let timeout
   return () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(render, 300);
-  };
-})();
+    clearTimeout(timeout)
+    timeout = setTimeout(render, 300)
+  }
+})()
 
-dataEditor.onDidChangeModelContent(debouncedRender);
-templateEditor.onDidChangeModelContent(debouncedRender);
+dataEditor.onDidChangeModelContent(debouncedRender)
+templateEditor.onDidChangeModelContent(debouncedRender)
