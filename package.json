@@ -67,6 +67,7 @@
     "@poppinss/inspect": "^1.0.1",
     "@poppinss/macroable": "^1.0.4",
     "@poppinss/string": "file:./libs/poppinss/string",
+    "@poppinss/exception": "file:./libs/poppinss/exception",
     "@poppinss/utils": "^6.9.2",
     "astring": "^1.9.0",
     "classnames": "^2.5.1",
