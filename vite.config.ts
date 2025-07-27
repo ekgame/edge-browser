@@ -5,4 +5,13 @@ export default defineConfig({
   plugins: [
     monacoEditorPlugin.default({}),
   ],
+  build: {
+    outDir: 'dist_web',
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  },
+  base: '/edge/'
 });

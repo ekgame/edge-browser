@@ -37,7 +37,8 @@
     "prepublishOnly": "npm run build",
     "release": "release-it",
     "quick:test": "node --import=ts-node-maintained/register/esm --enable-source-maps bin/test.ts",
-    "serve": "vite"
+    "serve": "vite",
+    "build:website": "vite build"
   },
   "devDependencies": {
     "@adonisjs/eslint-config": "^2.0.0-beta.7",
